@@ -1,0 +1,67 @@
+---
+title: "Act-I"
+format: html
+editor: visual
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+```{r}
+#################################################
+# Example Psychology Dataset + Analyses
+#################################################
+
+DATA <- "
+ID,Group,Gender,Age,Sleep,Stress,Anxiety,RT_Congruent,RT_Incongruent
+1,Control,F,18,8.1,12,15,520,610
+2,Control,M,19,7.8,14,17,540,640
+3,Control,F,20,7.2,18,20,550,670
+4,Control,M,21,6.8,20,22,570,700
+5,Control,F,22,6.4,23,24,590,730
+6,Treatment,M,23,6.1,24,26,560,660
+7,Treatment,F,24,5.8,27,29,590,700
+8,Treatment,M,25,5.5,29,31,610,730
+9,Treatment,F,26,5.2,31,34,630,760
+10,Treatment,M,27,5.0,33,36,650,790
+11,Control,F,21,7.5,16,18,535,630
+12,Treatment,M,22,5.7,28,30,600,720
+13,Control,F,20,7.9,15,17,530,620
+14,Treatment,F,25,5.4,30,33,620,740
+15,Control,M,23,6.9,19,21,560,680
+"
+
+df <- read.csv(text = DATA)
+
+#################################################
+# Descriptives
+#################################################
+
+summary(df)
+
+#################################################
+# Correlations
+#################################################
+
+cor(
+  df[, c("Age", "Sleep", "Stress", "Anxiety")]
+)
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
